@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/style.css">
+  <title>CSS Grid Alignment + Centering!</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="itm itm1">1</div>
+    <div class="itm itm2">2</div>
+    <div class="itm itm3">3</div>
+    <div class="itm itm4">4</div>
+    <div class="itm itm5">5</div>
+    <div class="itm itm6">6</div>
+    <div class="itm itm7">7</div>
+    <div class="itm itm8">8</div>
+    <div class="itm itm9">9</div>
+    <div class="itm itm10">10</div>   
+  </div>
+
+  <style>
+    /* CSS Grid alignment and centering properties:
+
+      justify-items:
+      align-items:
+
+      justify-content:
+      align-content:
+
+      align-self: case by case basis
+      justify-self: case by case basis
+
+      justify-* is row axis(x axis -- HORIZONTAL AXIS)
+      align-* is column axis(y axis -- VERTICAL AXIS)
+    */
+
+    .container {
+      display: grid;
+      grid-gap: 20px;
+      height: 500px;
+      border: 10px solid var(--yellow);
+      grid-template-columns: repeat(5, 130px);
+      
+      /* justify-items: center;  **default is "stretch" , see CSS Tricks for all values**
+      align-items: center; */      
+      place-items: stretch stretch; /* new property, use auto-prefixer */
+      justify-content: space-between;
+      align-content: space-around;      
+    }
+
+    .itm {
+      background: white;
+    }
+
+    .itm5 {
+      justify-self: center;
+      align-self: center;
+      height: 50px;
+    }
+
+    /* Note: see base styles for how to center text inside elements (align/justify) */
+  </style>
+</body>
+
+</html>
