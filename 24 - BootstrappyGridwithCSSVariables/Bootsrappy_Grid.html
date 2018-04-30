@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bootstrappy Grid with CSS Variables!</title>
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+
+<body>
+<!-- Use a inline style to set our CSS variable and override the original setting -->
+  <div class="grid" style="--cols: 10;">
+    <div class="item">1</div>
+    <div class="item" style="--span: 7">
+      <div class="grid" style="span: 2">
+        <div class="item">1</div>
+        <div class="item">2</div><!-- Beware of double grid gap, use negative offset --> 
+      </div>
+    </div> 
+    <div class="item">3</div>
+    <div class="item">4</div>
+  </div>
+
+  <style>
+    .grid {
+      display: grid;
+      grid-gap: 20px;
+      grid-template-columns: repeat(12, minmax(0, 1fr)); /*  use minmax set to 0 instead...to eliminate overflow of text */
+    }
+
+    /* Quick Fix for problem with content eating up free space(fr) */
+    .item {
+     /* min-width: 0;  We will have to deal with overflow of text now, so not an ideal solution */
+     min-width: 0; 
+     width: 100%;
+     --span: 1;
+     grid-column: span var(--span);
+    }
+  </style>
+
+</body>
+
+</html>
